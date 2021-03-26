@@ -30384,7 +30384,7 @@
 	            }
 	        };
 	        _this.handleSubmit = function (event) { return __awaiter(_this, void 0, void 0, function () {
-	            var _a, history, inputValue, currentPath, inputPrompt, fileSystem, _b, commandName, commandOptions, commandTargets, commandResult, updatedState, e_1, updatedHistory;
+	            var _a, history, inputValue, currentPath, inputPrompt, fileSystem, _b, commandName, commandOptions, commandTargets, commandResult, updatedState, e_1, inputVal, updatedHistory;
 	            var _c, _d, _e;
 	            return __generator(this, function (_f) {
 	                switch (_f.label) {
@@ -30409,11 +30409,24 @@
 	                        return [3 /*break*/, 4];
 	                    case 4: return [3 /*break*/, 6];
 	                    case 5:
-	                        commandResult = "command not found: " + commandName;
+	                        if (commandName === 'clear') {
+	                            console.log('clear!');
+	                            history.forEach(function (item) {
+	                                item.result = '';
+	                                item.input = react.createElement(react.Fragment, null);
+	                            });
+	                        }
+	                        else {
+	                            commandResult = "command not found: " + commandName;
+	                        }
 	                        _f.label = 6;
 	                    case 6:
+	                        inputVal = react.createElement(react.Fragment, null);
+	                        if (commandName !== 'clear') {
+	                            inputVal = react.createElement(Input, { currentPath: currentPath, inputValue: inputValue, inputPrompt: inputPrompt, readOnly: true });
+	                        }
 	                        updatedHistory = history.concat({
-	                            input: (react.createElement(Input, { currentPath: currentPath, inputValue: inputValue, inputPrompt: inputPrompt, readOnly: true })),
+	                            input: (inputVal),
 	                            id: this.state.currentCommandId,
 	                            result: commandResult,
 	                            value: inputValue,

@@ -357,19 +357,29 @@ export class Terminal extends Component<TerminalProps, TerminalState> {
       } catch (e) {
         commandResult = `Error: ${e}`;
       }
+    } else if (commandName === 'clear') {
+      console.log('clear!');
+      history.forEach((item) => {
+        item.result = '';
+        item.input = <></>;
+      });
     } else {
       commandResult = `command not found: ${commandName}`;
     }
 
-    const updatedHistory = history.concat({
-      input: (
+    let inputVal = <></>;
+    if (commandName !== 'clear') {
+      inputVal = (
         <Input
           currentPath={currentPath}
           inputValue={inputValue}
           inputPrompt={inputPrompt}
           readOnly={true}
         />
-      ),
+      );
+    }
+    const updatedHistory = history.concat({
+      input: inputVal,
       id: this.state.currentCommandId,
       result: commandResult,
       value: inputValue,
