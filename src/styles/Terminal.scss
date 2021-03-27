@@ -90,6 +90,17 @@
             width: 24px;
           }
         }
+        &.ls-image {
+          color: map-get($themeDark, red);
+
+          svg {
+            fill: map-get($themeDark, red);
+            margin-top: 2px;
+            margin-bottom: 2px;
+            height: 20px;
+            width: 24px;
+          }
+        }
       }
     }
   }

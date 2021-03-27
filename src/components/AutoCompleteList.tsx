@@ -2,7 +2,7 @@ import React from 'react';
 
 export interface AutoCompleteList {
   [index: string]: {
-    type: 'FOLDER' | 'FILE';
+    type: 'FOLDER' | 'FILE' | 'PNG';
   };
 }
 

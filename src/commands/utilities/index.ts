@@ -165,7 +165,7 @@ export function getTarget(
   } else if (has(fileSystem, internalPath)) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const target = get(fileSystem, internalPath);
-    if (target.type === 'FILE') {
+    if (target.type === 'FILE' || target.type === 'PNG') {
       const [fileName] = internalPath.split('.').slice(-1);
       return { [fileName]: target };
     } else {

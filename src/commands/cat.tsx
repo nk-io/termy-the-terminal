@@ -42,7 +42,7 @@ function cat(
       reject('Invalid target path');
     }
 
-    if (file.type === 'FILE') {
+    if (file.type === 'PNG') {
       if (isImageExtension(file.extension)) {
         resolve({
           commandResult: (

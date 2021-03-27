@@ -1,6 +1,7 @@
 import React from 'react';
 import FolderIcon from '../images/folder.svg';
 import FileIcon from '../images/file.svg';
+import PNGIcon from '../images/image.svg';
 import { ItemListType } from '../';
 
 interface LsResultProps {
@@ -16,6 +17,12 @@ const LsResult: React.FC<LsResultProps> = (props): JSX.Element => {
         return (
           <li className="ls-folder" key={key}>
             <FolderIcon /> <span>{key}</span>
+          </li>
+        );
+      } else if (lsResult[key].type === 'PNG') {
+        return (
+          <li className="ls-image" key={key}>
+            <PNGIcon /> <span>{key}</span>
           </li>
         );
       }

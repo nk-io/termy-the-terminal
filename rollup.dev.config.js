@@ -9,10 +9,10 @@ import { getBasePlugins } from './rollup.config';
 export default (commandLineArgs) => {
   const targetFolder = commandLineArgs.configDocBuild ? 'docs' : 'dist';
   const config = {
-    input: 'src/demo.tsx',
+    input: 'src/app.tsx',
     output: [
       {
-        file: `${targetFolder}/demo.js`,
+        file: `${targetFolder}/app.js`,
         format: 'iife',
         sourcemap: true,
       },
@@ -36,7 +36,7 @@ export default (commandLineArgs) => {
         clean: true,
         tsconfigOverride: {
           compilerOptions: { declaration: false, sourceMap: true },
-          include: ['src/index.tsx', './src/types.d.ts', 'src/demo.tsx'],
+          include: ['src/index.tsx', './src/types.d.ts', 'src/app.tsx'],
         },
       }),
       copy({

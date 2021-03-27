@@ -41,7 +41,7 @@ const exampleFileSystem: FileSystem = {
         },
       },
       dog: {
-        type: 'FILE',
+        type: 'PNG',
         content: dogImg,
         extension: 'png',
       },

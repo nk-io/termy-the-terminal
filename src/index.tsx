@@ -72,10 +72,10 @@ export interface TerminalProps {
 }
 
 export interface FileSystem {
-  [key: string]: TerminalFolder | TerminalFile;
+  [key: string]: TerminalFolder | TerminalFile | TerminalImageFile;
 }
 
-export type TerminalFile = TerminalTextFile | TerminalImageFile;
+export type TerminalFile = TerminalTextFile;
 
 export interface TerminalTextFile {
   [key: string]: 'FILE' | string | JSX.Element;
@@ -85,8 +85,8 @@ export interface TerminalTextFile {
 }
 
 export interface TerminalImageFile {
-  [key: string]: 'FILE' | string;
-  type: 'FILE';
+  [key: string]: 'PNG' | string;
+  type: 'PNG';
   content: string;
   extension: 'jpg' | 'png' | 'gif';
 }
@@ -104,7 +104,7 @@ export type CommandResponse = {
 
 export interface ItemListType {
   [index: string]: {
-    type: 'FOLDER' | 'FILE';
+    type: 'FOLDER' | 'FILE' | 'PNG';
   };
 }
 
