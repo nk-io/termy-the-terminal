@@ -50,9 +50,11 @@ export interface CommandHandler {
 }
 
 export interface CommandAutoCompleteHandler {
-  (fileSystem: FileSystem, currentPath: string, target: string): Promise<
-    AutoCompleteResponse
-  >;
+  (
+    fileSystem: FileSystem,
+    currentPath: string,
+    target: string,
+  ): Promise<AutoCompleteResponse>;
 }
 
 export interface Command {
@@ -345,24 +347,26 @@ export class Terminal extends Component<TerminalProps, TerminalState> {
     let commandResult: CommandResponse['commandResult'];
     let updatedState: CommandResponse['updatedState'] = {};
     if (commandName in commandList) {
-      try {
-        ({ commandResult, updatedState = {} } = await commandList[
-          commandName
-        ].handler(
-          fileSystem,
-          currentPath,
-          commandTargets[0],
-          ...commandOptions,
-        ));
-      } catch (e) {
-        commandResult = `Error: ${e}`;
+      if (commandName === 'clear') {
+        console.log('clear!');
+        history.forEach((item) => {
+          item.result = '';
+          item.input = <></>;
+        });
+      } else {
+        try {
+          ({ commandResult, updatedState = {} } = await commandList[
+            commandName
+          ].handler(
+            fileSystem,
+            currentPath,
+            commandTargets[0],
+            ...commandOptions,
+          ));
+        } catch (e) {
+          commandResult = `Error: ${e}`;
+        }
       }
-    } else if (commandName === 'clear') {
-      console.log('clear!');
-      history.forEach((item) => {
-        item.result = '';
-        item.input = <></>;
-      });
     } else {
       commandResult = `command not found: ${commandName}`;
     }

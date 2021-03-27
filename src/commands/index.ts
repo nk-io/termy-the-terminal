@@ -5,6 +5,7 @@ import cat from './cat';
 import help from './help';
 import pwd from './pwd';
 import rm from './rm';
+import clear from './clear';
 import { Command } from '..';
 
 const commands: {
@@ -17,6 +18,7 @@ const commands: {
   mkdir,
   pwd,
   rm,
+  clear,
 };
 
 export default commands;

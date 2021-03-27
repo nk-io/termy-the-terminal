@@ -7,7 +7,7 @@ import {
   FileSystem,
   Terminal,
   utilities,
-} from './';
+} from '.';
 import exampleFileSystem from './data/exampleFileSystem';
 
 const { getInternalPath, stripFileExtension } = utilities;
